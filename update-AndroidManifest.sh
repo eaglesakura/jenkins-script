@@ -7,7 +7,7 @@
 
 
 # BUILD_NUMBER=3103
-MANIFEST_PATH=${0}
+MANIFEST_PATH=${1}
 TEMP_MANIFEST_PATH=${MANIFEST_PATH}.txt
 
 if [ -z "${BUILD_NUMBER}" ]; then
@@ -16,7 +16,7 @@ if [ -z "${BUILD_NUMBER}" ]; then
 fi
 
 echo "manifest file = ${MANIFEST_PATH}"
-if [ -f ${MANIFEST_PATH} ]; then
+if [ -f "${MANIFEST_PATH}" ]; then
     echo "manifest exist!"
 else
     echo "manifest not found!!"
@@ -25,6 +25,7 @@ fi
 
 # ビルド番号を置換
 cat ${MANIFEST_PATH} | sed "s/android:versionCode=\".*\"/android:versionCode=\"${BUILD_NUMBER}\"/" > ${TEMP_MANIFEST_PATH}
+
 # バージョン名を置換
 cat ${TEMP_MANIFEST_PATH} | sed "s/JENKINS_BUILD_NUMBER/${BUILD_NUMBER}/" > ${MANIFEST_PATH}
 
