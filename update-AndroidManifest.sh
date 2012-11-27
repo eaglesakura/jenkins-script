@@ -4,6 +4,8 @@
 # 機能２：Jenkinsのビルド番号をバージョン名と置換します。
 #       その場合、"JENKINS_BUILD_NUMBER"をバージョン名に加えてください。
 #       例：android:versionName="1.00.JENKINS_BUILD_NUMBER"
+# 呼び出し
+# update-AndroidManifest.sh "project-path/AndroidManifest.xml"
 
 
 # BUILD_NUMBER=3103
