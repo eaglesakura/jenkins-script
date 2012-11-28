@@ -10,6 +10,7 @@
 
 # BUILD_NUMBER=3103
 MANIFEST_PATH=${1}
+APP_VERSION_NAME=${2}
 TEMP_MANIFEST_PATH=${MANIFEST_PATH}.txt
 
 if [ -z "${BUILD_NUMBER}" ]; then
@@ -29,7 +30,7 @@ fi
 cat ${MANIFEST_PATH} | sed "s/android:versionCode=\".*\"/android:versionCode=\"${BUILD_NUMBER}\"/" > ${TEMP_MANIFEST_PATH}
 
 # バージョン名を置換
-cat ${TEMP_MANIFEST_PATH} | sed "s/JENKINS_BUILD_NUMBER/${BUILD_NUMBER}/" > ${MANIFEST_PATH}
+cat ${TEMP_MANIFEST_PATH} | sed "s/APP_VERSION_NAME/${APP_VERSION_NAME}/" > ${MANIFEST_PATH}
 
 # テンポラリファイルを削除
 rm -f ${TEMP_MANIFEST_PATH}
